@@ -1,8 +1,9 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
 # Create your models here.
-
+User = get_user_model()
 class FlashCard(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='کاربر')
   question = models.TextField(verbose_name='سوال')
   answer = models.TextField(verbose_name='پاسخ')
   create_at = models.DateTimeField(auto_now_add=True)
